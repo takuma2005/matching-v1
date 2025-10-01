@@ -1,4 +1,5 @@
 import { MaterialIcons } from '@expo/vector-icons';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
   View,
@@ -13,12 +14,10 @@ import {
 
 import { colors, spacing, typography, borderRadius, shadows } from '../../styles/theme';
 
-type Props = {
-  role: 'student' | 'tutor';
-  onVerificationComplete: (phoneNumber: string, code: string) => void;
-};
-
-export default function PhoneVerificationScreen({ role, onVerificationComplete }: Props) {
+export default function PhoneVerificationScreen() {
+  const params = useLocalSearchParams();
+  const router = useRouter();
+  const role = (params.role as 'student' | 'tutor') || 'student';
   const [phoneNumber, setPhoneNumber] = useState('');
   const [verificationCode, setVerificationCode] = useState('');
   const [step, setStep] = useState<'phone' | 'code'>('phone');
@@ -48,7 +47,7 @@ export default function PhoneVerificationScreen({ role, onVerificationComplete }
       return;
     }
 
-    onVerificationComplete(phoneNumber, verificationCode);
+    router.push({ pathname: '/(auth)/profile-setup', params: { role, phoneNumber } });
   };
 
   const formatPhoneNumber = (text: string) => {

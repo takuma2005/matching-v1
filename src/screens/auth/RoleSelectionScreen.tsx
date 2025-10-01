@@ -1,14 +1,12 @@
 import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { colors, spacing, typography, borderRadius, shadows } from '../../styles/theme';
 
-type Props = {
-  onRoleSelect: (role: 'student' | 'tutor') => void;
-};
-
-export default function RoleSelectionScreen({ onRoleSelect }: Props) {
+export default function RoleSelectionScreen() {
+  const router = useRouter();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -20,7 +18,7 @@ export default function RoleSelectionScreen({ onRoleSelect }: Props) {
       <View style={styles.content}>
         <TouchableOpacity
           style={[styles.roleCard, styles.studentCard]}
-          onPress={() => onRoleSelect('student')}
+          onPress={() => router.push({ pathname: '/(auth)/phone-verification', params: { role: 'student' } })}
           activeOpacity={0.8}
         >
           <MaterialIcons name="school" size={48} color={colors.primary} />
@@ -32,7 +30,7 @@ export default function RoleSelectionScreen({ onRoleSelect }: Props) {
 
         <TouchableOpacity
           style={[styles.roleCard, styles.tutorCard]}
-          onPress={() => onRoleSelect('tutor')}
+          onPress={() => router.push({ pathname: '/(auth)/phone-verification', params: { role: 'tutor' } })}
           activeOpacity={0.8}
         >
           <MaterialIcons name="person" size={48} color={colors.secondary} />
