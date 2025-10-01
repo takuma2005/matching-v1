@@ -42,7 +42,7 @@ export const useChat = ({
   });
 
   // Refs
-  const typingTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const isTypingRef = useRef(false);
   const unsubscribesRef = useRef<(() => void)[]>([]);
 

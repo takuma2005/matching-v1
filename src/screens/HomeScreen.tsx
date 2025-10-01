@@ -3,8 +3,6 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useCallback } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
-import { useFavorites } from '../contexts/FavoritesContext';
-import { useUser } from '../contexts/UserContext';
 import { HomeStackParamList } from '../navigation/HomeStackNavigator';
 import { colors, spacing, typography, borderRadius } from '../styles/theme';
 
@@ -20,18 +18,9 @@ type Props = {
 };
 
 export default function HomeScreen({ navigation }: Props) {
-  const { isFavorite, toggleFavorite } = useFavorites();
-  const { user, refreshCoins } = useUser();
   const { recommendedTutors, newTutors, upcoming } = useHomeData();
   const [scrollY, setScrollY] = React.useState(0);
 
-  // 画面フォーカス時にコイン残高をリフレッシュ
-  useFocusEffect(
-    useCallback(() => {
-      refreshCoins();
-      return undefined;
-    }, [refreshCoins]),
-  );
 
   const handleTutorPress = (tutorId: string) => {
     navigation.navigate('TutorDetail', { tutorId });
@@ -70,10 +59,8 @@ export default function HomeScreen({ navigation }: Props) {
           <TutorsSection
             title="おすすめの先輩"
             tutors={recommendedTutors}
-            isFavorite={isFavorite}
             onPressTutor={handleTutorPress}
             onToggleFavorite={(id) => {
-              if (user) toggleFavorite(id, user.id);
             }}
           />
 
@@ -81,10 +68,8 @@ export default function HomeScreen({ navigation }: Props) {
           <TutorsSection
             title="新着の先輩"
             tutors={newTutors}
-            isFavorite={isFavorite}
             onPressTutor={handleTutorPress}
             onToggleFavorite={(id) => {
-              if (user) toggleFavorite(id, user.id);
             }}
           />
 

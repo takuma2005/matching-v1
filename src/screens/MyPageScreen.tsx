@@ -7,7 +7,6 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Alert } fr
 
 import { StandardScreen } from '../components/templates';
 import { useAuth } from '../contexts/AuthContext';
-import { useUser } from '../contexts/UserContext';
 import type { HomeStackParamList } from '../navigation/HomeStackNavigator';
 import type { MyPageStackParamList } from '../navigation/MyPageStackNavigator';
 import type { StudentTabParamList } from '../navigation/StudentTabNavigator';
@@ -23,7 +22,6 @@ type MyPageNav = CompositeNavigationProp<
 >;
 
 export default function MyPageScreen({ navigation }: { navigation: MyPageNav }) {
-  const { user } = useUser();
   const { role, switchRole } = useAuth();
 
   const handleRoleSwitch = (newRole: 'student' | 'tutor') => {

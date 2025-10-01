@@ -12,7 +12,6 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
-import { useUser } from '../../contexts/UserContext';
 import type { MyPageStackParamList } from '../../navigation/MyPageStackNavigator';
 import { colors, spacing, typography, borderRadius } from '../../styles/theme';
 
@@ -26,7 +25,6 @@ interface ProfileEditScreenProps {
 }
 
 export default function ProfileEditScreen({ navigation }: ProfileEditScreenProps) {
-  const { user, updateUserProfile, loading } = useUser();
 
   const [formData, setFormData] = useState({
     name: '',

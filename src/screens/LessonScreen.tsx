@@ -4,7 +4,6 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Image } from
 
 import Card from '@/components/common/Card';
 import ScreenContainer from '@/components/common/ScreenContainer';
-import { useUser } from '@/contexts/UserContext';
 import { CoinManager } from '@/domain/coin/coinManager';
 import { getApiClient } from '@/services/api/mock';
 import { MockEscrowService } from '@/services/api/mock/escrowService';
@@ -41,7 +40,6 @@ export default function LessonScreen() {
   const [tutors, setTutors] = useState<Tutor[]>([]);
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { user } = useUser();
   const escrowService = new MockEscrowService();
 
   // API Lesson -> 画面表示用 Lesson への変換

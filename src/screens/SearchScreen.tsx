@@ -5,7 +5,6 @@ import { View, Text, StyleSheet, FlatList, TextInput, TouchableOpacity } from 'r
 
 import TutorCard from '../components/tutor/TutorCard';
 import TutorCardSkeleton from '../components/tutor/TutorCardSkeleton';
-import { useFavorites } from '../contexts/FavoritesContext';
 import { SearchStackParamList } from '../navigation/SearchStackNavigator';
 import { colors, spacing, typography, borderRadius } from '../styles/theme';
 
@@ -42,7 +41,6 @@ const SORT_OPTIONS: { key: SortOption; label: string }[] = [
 ];
 
 export default function SearchScreen({ navigation }: Props) {
-  const { isFavorite, toggleFavorite } = useFavorites();
   const { user: authUser } = useAuth();
   const {
     tutors,
@@ -89,17 +87,14 @@ export default function SearchScreen({ navigation }: Props) {
         totalLessons={item.total_lessons}
         onlineAvailable={item.online_available ?? false}
         avatarUrl={item.avatar_url}
-        isFavorite={isFavorite(item.id)}
         onPress={() => handleTutorPress(item.id)}
         onFavoritePress={() => {
           if (authUserId) {
-            toggleFavorite(item.id, authUserId);
           }
         }}
         onDetailPress={() => handleTutorPress(item.id)}
       />
     ),
-    [authUserId, handleTutorPress, isFavorite, toggleFavorite],
   );
 
   const renderHeader = () => (

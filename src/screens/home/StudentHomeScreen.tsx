@@ -1,11 +1,6 @@
-import { useFocusEffect, type NavigationProp, type ParamListBase } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
-import { useFavorites } from '../../contexts/FavoritesContext';
-import { useUser } from '../../contexts/UserContext';
-import { HomeStackParamList } from '../../navigation/HomeStackNavigator';
 import { colors, spacing, typography, borderRadius } from '../../styles/theme';
 
 import BlurHeader from '@/components/home/BlurHeader';
@@ -14,28 +9,13 @@ import UpcomingLessonCard from '@/components/home/UpcomingLessonCard';
 import WelcomeCard from '@/components/home/WelcomeCard';
 import { useHomeData } from '@/hooks/useHomeData';
 
-type StudentHomeScreenNavigationProp = StackNavigationProp<HomeStackParamList, 'HomeMain'>;
-
-type Props = {
-  navigation: StudentHomeScreenNavigationProp;
-};
-
-export default function StudentHomeScreen({ navigation }: Props) {
-  const { isFavorite, toggleFavorite } = useFavorites();
-  const { user, refreshCoins } = useUser();
+export default function StudentHomeScreen() {
   const { recommendedTutors, newTutors, upcoming } = useHomeData();
   const [scrollY, setScrollY] = React.useState(0);
 
-  // 画面フォーカス時にコイン残高をリフレッシュ
-  useFocusEffect(
-    useCallback(() => {
-      refreshCoins();
-      return undefined;
-    }, [refreshCoins]),
-  );
-
   const handleTutorPress = (tutorId: string) => {
-    navigation.navigate('TutorDetail', { tutorId });
+    // TODO: Navigate to tutor detail
+    console.log('Navigate to tutor', tutorId);
   };
 
   return (
@@ -93,10 +73,8 @@ export default function StudentHomeScreen({ navigation }: Props) {
           <TutorsSection
             title="あなたにおすすめの先輩"
             tutors={recommendedTutors}
-            isFavorite={isFavorite}
             onPressTutor={handleTutorPress}
             onToggleFavorite={(id) => {
-              if (user) toggleFavorite(id, user.id);
             }}
           />
 
@@ -104,10 +82,8 @@ export default function StudentHomeScreen({ navigation }: Props) {
           <TutorsSection
             title="新しく登録した先輩"
             tutors={newTutors}
-            isFavorite={isFavorite}
             onPressTutor={handleTutorPress}
             onToggleFavorite={(id) => {
-              if (user) toggleFavorite(id, user.id);
             }}
           />
 

@@ -86,7 +86,7 @@ const BOT_RESPONSES = [
 export class MockChatRepository implements ChatRepository {
   private messageSubscriptions: Map<string, ((message: Message) => void)[]> = new Map();
   private typingSubscriptions: Map<string, ((typingInfo: TypingInfo) => void)[]> = new Map();
-  private botResponseTimers: Map<string, NodeJS.Timeout> = new Map();
+  private botResponseTimers: Map<string, ReturnType<typeof setTimeout>> = new Map();
 
   async listMessages(roomId: string, params?: PaginationParams): Promise<Message[]> {
     // 遅延をシミュレート

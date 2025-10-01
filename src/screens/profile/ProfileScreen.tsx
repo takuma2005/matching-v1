@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { useUser } from '../../contexts/UserContext';
 import type { MyPageStackParamList } from '../../navigation/MyPageStackNavigator';
 import { colors, spacing, typography, borderRadius } from '../../styles/theme';
 
@@ -26,7 +25,6 @@ interface ProfileScreenProps {
 }
 
 export default function ProfileScreen({ navigation }: ProfileScreenProps) {
-  const { user, loading, error } = useUser();
 
   if (loading) {
     return (
@@ -140,7 +138,7 @@ export default function ProfileScreen({ navigation }: ProfileScreenProps) {
         <Section title="興味のある科目">
           {user.interestedSubjects.length > 0 ? (
             <View style={styles.subjectTags}>
-              {user.interestedSubjects.map((subject, index) => (
+              {user.interestedSubjects.map((subject: string, index: number) => (
                 <View key={index} style={styles.subjectTag}>
                   <Text style={styles.subjectTagText}>{subject}</Text>
                 </View>

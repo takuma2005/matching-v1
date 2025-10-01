@@ -1,33 +1,14 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import { useFocusEffect } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 
-import { useUser } from '../../contexts/UserContext';
-import { HomeStackParamList } from '../../navigation/HomeStackNavigator';
 import { colors, spacing, typography, borderRadius } from '../../styles/theme';
 
 import BlurHeader from '@/components/home/BlurHeader';
 import WelcomeCard from '@/components/home/WelcomeCard';
 
-type TutorHomeScreenNavigationProp = StackNavigationProp<HomeStackParamList, 'HomeMain'>;
-
-type Props = {
-  navigation: TutorHomeScreenNavigationProp;
-};
-
-export default function TutorHomeScreen({ navigation }: Props) {
-  const { user, refreshCoins } = useUser();
+export default function TutorHomeScreen() {
   const [scrollY, setScrollY] = React.useState(0);
-
-  // 画面フォーカス時にコイン残高をリフレッシュ
-  useFocusEffect(
-    useCallback(() => {
-      refreshCoins();
-      return undefined;
-    }, [refreshCoins]),
-  );
 
   // モックデータ - 実際の実装では API から取得
   const mockStats = {

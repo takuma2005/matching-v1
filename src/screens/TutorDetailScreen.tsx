@@ -25,7 +25,6 @@ import Animated, {
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import BottomSheet from '../components/common/BottomSheet';
-import { useFavorites } from '../contexts/FavoritesContext';
 import type { HomeStackParamList } from '../navigation/HomeStackNavigator';
 import type { SearchStackParamList } from '../navigation/SearchStackNavigator';
 import { colors, spacing, typography, borderRadius } from '../styles/theme';
@@ -55,7 +54,6 @@ export default function TutorDetailScreen({ route, navigation }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [currentStudent, setCurrentStudent] = useState<Student | null>(null);
   const [tutor, setTutor] = useState<Tutor | undefined>(undefined);
-  const { isFavorite, toggleFavorite } = useFavorites();
   const { student: authStudent, user: authUser } = useAuth();
   const api = React.useMemo(() => getApiClient() as typeof mockApiClient, []);
 
@@ -290,8 +288,6 @@ export default function TutorDetailScreen({ route, navigation }: Props) {
   const handleToggleFavorite = () => {
     if (!currentStudent || !tutor) return;
 
-    const wasFavorite = isFavorite(tutorId);
-    toggleFavorite(tutorId, currentStudent.id);
 
     const action = wasFavorite ? '削除' : '追加';
     setTimeout(() => {
@@ -423,9 +419,7 @@ export default function TutorDetailScreen({ route, navigation }: Props) {
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
           >
             <MaterialIcons
-              name={isFavorite(tutorId) ? 'favorite' : 'favorite-border'}
               size={24}
-              color={isFavorite(tutorId) ? colors.error : colors.gray600}
             />
           </TouchableOpacity>
 
