@@ -1,0 +1,421 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeScreen snapshot matches snapshot 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "#F6FAFF",
+      "flex": 1,
+    }
+  }
+>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "paddingBottom": 100,
+        "paddingTop": 140,
+      }
+    }
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+    showsVerticalScrollIndicator={false}
+    style={
+      {
+        "backgroundColor": "#F6FAFF",
+        "flex": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          {
+            "backgroundColor": "#F6FAFF",
+            "flex": 1,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "borderRadius": 16,
+              "elevation": 8,
+              "marginBottom": 16,
+              "marginHorizontal": 16,
+              "shadowColor": "#000",
+              "shadowOffset": {
+                "height": 4,
+                "width": 0,
+              },
+              "shadowOpacity": 0.1,
+              "shadowRadius": 8,
+            }
+          }
+          testID="welcome-card"
+        >
+          <LinearGradient
+            colors={
+              [
+                "#8EC5FF",
+                "#60A5FA",
+                "#38BDF8",
+              ]
+            }
+            end={
+              {
+                "x": 1,
+                "y": 1,
+              }
+            }
+            start={
+              {
+                "x": 0,
+                "y": 0,
+              }
+            }
+            style={
+              {
+                "borderRadius": 16,
+                "paddingHorizontal": 24,
+                "paddingVertical": 24,
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#ffffff",
+                  "fontSize": 20,
+                  "fontWeight": "700",
+                  "marginBottom": 4,
+                }
+              }
+            >
+              おはよう、
+              ゲスト
+              さん！
+            </Text>
+            <Text
+              style={
+                {
+                  "color": "rgba(255,255,255,0.9)",
+                  "fontSize": 16,
+                }
+              }
+            >
+              👋 今日も新しい学びの出会いを見つけよう
+            </Text>
+          </LinearGradient>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "transparent",
+                "paddingVertical": 8,
+              },
+              {
+                "paddingVertical": 8,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "marginBottom": 12,
+                  "paddingHorizontal": 16,
+                },
+                {
+                  "marginBottom": 12,
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#111827",
+                  "fontSize": 18,
+                  "fontWeight": "600",
+                }
+              }
+            >
+              授業の予定
+            </Text>
+          </View>
+          <Text
+            style={
+              {
+                "color": "#4b5563",
+                "fontSize": 12,
+                "marginHorizontal": 24,
+              }
+            }
+          >
+            次の授業はまだありません
+          </Text>
+        </View>
+        <View
+          style={
+            {
+              "backgroundColor": "transparent",
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": 12,
+                "paddingHorizontal": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#111827",
+                  "fontSize": 18,
+                  "fontWeight": "600",
+                }
+              }
+            >
+              おすすめの先輩
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "backgroundColor": "transparent",
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "marginBottom": 12,
+                "paddingHorizontal": 16,
+              }
+            }
+          >
+            <Text
+              style={
+                {
+                  "color": "#111827",
+                  "fontSize": 18,
+                  "fontWeight": "600",
+                }
+              }
+            >
+              新着の先輩
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "backgroundColor": "#F6FAFF",
+              "height": 32,
+            }
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      [
+        {
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1000,
+        },
+        {
+          "paddingTop": 0,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          {
+            "backgroundColor": "#ffffff",
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingHorizontal": 24,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "color": "#3b82f6",
+            "fontSize": 20,
+            "fontWeight": "700",
+          }
+        }
+      >
+        センパイ
+      </Text>
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "gap": 8,
+          }
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#f59e0b20",
+              "borderRadius": 9999,
+              "flexDirection": "row",
+              "height": 28,
+              "marginRight": 8,
+              "opacity": 1,
+              "paddingHorizontal": 12,
+            }
+          }
+          testID="header-coin-button"
+        >
+          <MaterialIcons
+            color="#f59e0b"
+            name="paid"
+            size={16}
+          />
+          <Text
+            style={
+              {
+                "color": "#f59e0b",
+                "fontSize": 12,
+                "fontWeight": "700",
+                "marginLeft": 4,
+              }
+            }
+          >
+            0
+          </Text>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#f3f4f6",
+              "borderRadius": 9999,
+              "height": 32,
+              "justifyContent": "center",
+              "opacity": 1,
+              "padding": 4,
+              "width": 32,
+            }
+          }
+          testID="notification-icon"
+        >
+          <MaterialIcons
+            color="#374151"
+            name="notifications"
+            size={20}
+          />
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "backgroundColor": "#e5e7eb",
+          "height": 0.5,
+        }
+      }
+    />
+  </View>
+</View>
+`;
