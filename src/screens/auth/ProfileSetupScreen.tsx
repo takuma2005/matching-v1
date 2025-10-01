@@ -1,4 +1,5 @@
 import { MaterialIcons } from '@expo/vector-icons';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
   View,
@@ -11,28 +12,16 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import { useSupabaseAuth } from '@/contexts/SupabaseAuthContext';
 
 import { colors, spacing, typography, borderRadius, shadows } from '../../styles/theme';
 
-type Props = {
-  role: 'student' | 'tutor';
-  phoneNumber: string;
-  onProfileComplete: (profileData: ProfileData) => void;
-};
-
-export type ProfileData = {
-  name: string;
-  age: string;
-  location: string;
-  subjects?: string[];
-  introduction?: string;
-};
-
-export default function ProfileSetupScreen({
-  role,
-  phoneNumber: _phoneNumber,
-  onProfileComplete,
-}: Props) {
+export default function ProfileSetupScreen() {
+  const params = useLocalSearchParams();
+  const router = useRouter();
+  const { signUp } = useSupabaseAuth();
+  const role = (params.role as 'student' | 'tutor') || 'student';
+  const phoneNumber = params.phoneNumber as string;
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [location, setLocation] = useState('');
@@ -40,7 +29,7 @@ export default function ProfileSetupScreen({
   const [introduction, setIntroduction] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     if (!name.trim()) {
       Alert.alert('エラー', '名前を入力してください');
       return;
@@ -56,25 +45,22 @@ export default function ProfileSetupScreen({
 
     setLoading(true);
 
-    // モック：プロフィール保存処理
-    setTimeout(() => {
-      const profileData: ProfileData = {
-        name: name.trim(),
-        age: age.trim(),
-        location: location.trim(),
-        subjects:
-          role === 'tutor'
-            ? subjects
-                .split(',')
-                .map((s) => s.trim())
-                .filter((s) => s.length > 0)
-            : undefined,
-        introduction: introduction.trim() || undefined,
-      };
+    try {
+      const email = phoneNumber.replace(/\D/g, '') + '@senpai.app';
+      const password = 'temp' + Math.random().toString(36).substr(2, 9);
 
-      onProfileComplete(profileData);
+      const result = await signUp(email, password, name.trim(), role);
+
+      if (result.success) {
+        router.replace('/(tabs)/home');
+      } else {
+        Alert.alert('エラー', result.error || '登録に失敗しました');
+      }
+    } catch (error: any) {
+      Alert.alert('エラー', error.message || '登録に失敗しました');
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   const roleText = role === 'student' ? '後輩' : '先輩';
